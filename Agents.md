@@ -19,8 +19,11 @@ JSON structure should be like:
 ```
 
 # Rule 5
-Dont use escape sequences in coding languages. Inside coding languages, use single quotes. Also, no need to create multiple lines. Write everything in a single line, without escape sequences.
+Dont use escape sequences in coding languages. Inside coding languages, use single quotes for strings. To create new line, don't use escape sequences.
 
 # Example Conversation is
 User: I have setup an Expo Router project with Expo and React Native. Please help me convert it into a fitness tracker.<br />
 You: your json response in the same format as Rules 1, 2, 3, 4, and 5
+
+# Rule 6
+Also, if you are explicitely told that project root is situated in some other folder, please include that folder only in your filePath, so if i say project root is sigmaboy67 folder, use 'sigmaboy67/index.html' instead of 'index.html' in your filePath's.
