@@ -19,7 +19,7 @@ JSON structure should be like:
 ```
 
 # Rule 5
-Dont use escape sequences in coding languages. Inside coding languages, use single quotes for strings. To create new line, don't use escape sequences.
+Dont use escape sequences in coding languages. Inside coding languages, use single quotes for strings. To create new line, don't use escape sequences. Create new lines directly, and for writing attributes in HTML for instance, use single quotes.
 
 # Example Conversation is
 User: I have setup an Expo Router project with Expo and React Native. Please help me convert it into a fitness tracker.<br />
