@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Grok Bot Clone</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body style="display: flex; flex-direction: row;">
+    <!--Sidebar here-->
+    <div
+        style="background-color: rgba(128, 128, 128, 0.08); width: 30vw; height: 97vh; border-top-left-radius: 12pt; border-bottom-left-radius: 12pt; padding: 16pt 8pt; box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; display: flex; flex-direction: column; gap: 4px; border-right: 1px solid rgba(128, 128, 128, 0.15);">
+
+        <!-- macOS System/App Title Header (Optional) -->
+        <div style="padding: 0 8pt 12pt 8pt; font-size: 11pt; font-weight: 800; color: rgba(255,255,255,0.4);">
+            Grok</div>
+
+        <!-- Selected Item: Grok Bot -->
+        <div
+            style="display: flex; align-items: center; gap: 10px; padding: 8pt 10pt; background-color: rgba(255, 255, 255, 0.15); color: #ffffff; border-radius: 6pt; font-size: 13px; font-weight: 500; cursor: pointer; backdrop-filter: blur(10px);">
+            <!-- macOS Style AI/Sparkle Icon -->
+            <svg xmlns="http://w3.org" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path
+                    d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z" />
+                <path d="m5 3 1 2.5L8.5 6 6 7 5 9.5 4 7 1.5 6 4 5.5z" />
+                <path d="m19 17 1 2.5 2.5.5-2.5 1-1 2.5-1-2.5-2.5-1 2.5-1z" />
+            </svg>
+            Grok Bot
+        </div>
+
+        <!-- Unselected Placeholder Item (For macOS aesthetic context) -->
+        <div style="display: flex; align-items: center; gap: 10px; padding: 8pt 10pt; color: rgba(255,255,255,0.7); border-radius: 6pt; font-size: 13px; font-weight: 400; cursor: pointer;"
+            onmouseover="this.style.backgroundColor='rgba(255,255,255,0.05)'"
+            onmouseout="this.style.backgroundColor='transparent'">
+            <!-- macOS Style History/Clock Icon -->
+            <svg xmlns="http://w3.org" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10" />
+                <polyline points="12 6 12 12 16 14" />
+            </svg>
+            History
+        </div>
+    </div>
+    <div
+        style="background-color: rgba(128, 128, 128, 0.25); width: 70vw; height: 97vh; border-top-right-radius: 12pt; border-bottom-right-radius: 12pt; padding: 8pt; position: relative;">
+        <div id="chat_history" style="position: absolute; width: 98%; display: flex; flex-direction: column; gap: 8px;">
+        </div>
+        <form onsubmit="submitPrompt(event)"
+            style="display: flex; flex-direction: row; position: absolute; bottom: 0; gap: 8px; margin: 8px; width: 98%;">
+            <input id="prompt_input" placeholder="Message your Grok Bot" style="width: 96%; border-radius: 999px;" />
+            <button type="submit"
+                style="border-radius: 999px; width: 30; height: 30; display: flex; justify-content: center; align-items: center;">
+                <svg xmlns="http://w3.org" viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+                    <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" />
+                </svg>
+            </button>
+        </form>
+    </div>
+
+    <!-- This script is generated automatically by Eel at runtime -->
+    <script type="text/javascript" src="/eel.js"></script>
+    <script>
+        const submitPrompt = async (e) => {
+            e.preventDefault();
+            const field = document.querySelector("input");
+            const prompt = field.value;
+            field.value = "";
+            if (!prompt.trim()) return; // validate user prompt...
+            addToChatHistory("user_sent", prompt);
+            let response = await eel.agenticAI(prompt)();
+            addToChatHistory("ai_sent", response);
+        }
+        const addToChatHistory = (role, msg) => {
+            const container = document.getElementById("chat_history");
+            if (role === "user_sent") {
+                const bubble = document.createElement("p");
+                bubble.innerHTML = msg;
+                bubble.style.backgroundColor = "dodgerblue";
+                bubble.style.padding = "8px";
+                bubble.style.borderRadius = "12px";
+                bubble.style.alignSelf = "flex-end";
+                bubble.style.borderWidth = "1.6px";
+                bubble.style.borderColor = "rgba(200, 200, 255, 0.05)";
+                bubble.style.borderStyle = "solid";
+                bubble.style.width = "50%";
+                container.appendChild(bubble);
+            } else {
+                const bubble = document.createElement("p");
+                bubble.innerHTML = msg;
+                bubble.style.backgroundColor = "rgba(59, 59, 59, 0.5)";
+                bubble.style.padding = "8px";
+                bubble.style.borderRadius = "12px";
+                bubble.style.alignSelf = "flex-start";
+                bubble.style.borderWidth = "1.6px";
+                bubble.style.borderColor = "rgba(255, 255, 255, 0.05)";
+                bubble.style.borderStyle = "solid";
+                bubble.style.width = "70%";
+                bubble.style.color = "white";
+                container.appendChild(bubble);
+            }
+        }
+    </script>
+</body>
+
+</html>
