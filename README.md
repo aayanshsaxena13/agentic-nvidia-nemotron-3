@@ -9,3 +9,4 @@ Steps to setup your agentic developer environment are:
 
 # About the App
 It is a stripped-down, desi tryhard copy of Grok Bot. LOL!
+Just run 'py app.py' in terminal after cd-ing into the project root of the folder you downloaded these files in.
