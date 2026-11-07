@@ -34,10 +34,6 @@ def agenticAI(prompt):
         with open(x['filePath'], "w") as f:
             f.write(x['code'])
     
-    msg = client.chat.send(
-        model="nvidia/nemotron-3-ultra-550b-a55b:free",
-        messages=[{ "role": "user", "content": "Summarize your actions till now in 1-20 words maximum." }],
-    )
-    return msg.choices[0].message.content
+    return "Successfully implemented your request."
 
 eel.start('index.html', size=(1600, 900))
